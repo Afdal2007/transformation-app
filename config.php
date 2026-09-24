@@ -4,10 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'transformation_app';
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
+$db = getenv('MYSQLDATABASE');
 
 $conn = new mysqli($host, $user, $pass, $db);
 
