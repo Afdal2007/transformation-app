@@ -1,0 +1,536 @@
+/* ==================== VARIABLES & RESET ==================== */
+:root {
+  --primary: #667eea;
+  --secondary: #764ba2;
+  --success: #48bb78;
+  --danger: #f56565;
+  --bg-light: #f7fafc;
+  --bg-white: #ffffff;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --border: #e2e8f0;
+  --radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 40px 30px;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== HEADINGS ==================== */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+h1 + p {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 25px 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin: 15px 0 10px 0;
+  font-weight: 600;
+}
+
+/* ==================== DASHBOARD ==================== */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 30px 0;
+  align-items: start;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  transition: all 0.2s ease;
+}
+
+.score-item:hover {
+  background: #f0f4ff;
+  transform: translateX(5px);
+}
+
+.score-item span {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.score-item strong {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  background: rgba(118, 75, 162, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+#chart {
+  max-height: 350px;
+}
+
+/* ==================== FORMULAIRES ==================== */
+.form-section, .rituels-section, .stats-section {
+  background: var(--bg-light);
+  padding: 25px;
+  border-radius: var(--radius);
+  margin-top: 25px;
+  border: 1px solid var(--border);
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+select, input[type="range"], input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: var(--bg-white);
+}
+
+select:focus, input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[type="range"] {
+  padding: 0;
+  height: 8px;
+  accent-color: var(--primary);
+}
+
+.range-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+
+#scoreVal {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1.3rem;
+  min-width: 30px;
+}
+
+/* ==================== BOUTONS ==================== */
+button {
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==================== RITUELS ==================== */
+.add-ritual {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 25px;
+  align-items: end;
+}
+
+.add-ritual select, .add-ritual input {
+  margin: 0;
+}
+
+.add-ritual button {
+  width: auto;
+  padding: 12px 25px;
+  white-space: nowrap;
+}
+
+.ritual-group {
+  margin: 20px 0;
+}
+
+.ritual-group h3 {
+  margin: 15px 0 10px 0;
+  padding-left: 10px;
+  border-left: 3px solid var(--primary);
+}
+
+.ritual-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: var(--radius);
+  margin: 8px 0;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.ritual-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.ritual-item.done {
+  opacity: 0.7;
+  background: var(--bg-light);
+}
+
+.ritual-item.done span {
+  
+  color: var(--text-light);
+}
+
+.ritual-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--success);
+}
+
+.ritual-item span {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* ==================== STATISTIQUES ==================== */
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  margin: 15px 0;
+  box-shadow: var(--shadow);
+}
+
+.stat-card p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-card strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.stat-card span {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .add-ritual {
+    grid-template-columns: 1fr;
+  }
+
+  .add-ritual button {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .score-item {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  select, input, button {
+    font-size: 16px;
+  }
+
+  .ritual-item {
+    flex-wrap: wrap;
+  }
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stat-card, .score-item, .ritual-item {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+/* ==================== NAVBAR ==================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.navbar h1 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#username {
+  color: white;
+  font-weight: 500;
+}
+
+.navbar button {
+  width: auto;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.navbar button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: none;
+}
+/* ==================== DETAIL PAGE ==================== */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.btn-back {
+  width: auto;
+  padding: 10px 20px;
+  background: #e2e8f0;
+  color: var(--text-dark);
+  border: 2px solid var(--border);
+  font-weight: 600;
+  margin: 0;
+  box-shadow: none;
+}
+
+.btn-back:hover {
+  background: #cbd5e0;
+  transform: none;
+}
+
+.detail-header h1 {
+  margin: 0;
+  flex: 1;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.detail-chart, .detail-stats, .detail-rituels, .detail-history {
+  background: var(--bg-light);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.detail-chart {
+  grid-column: 1 / -1;
+}
+
+#detailChart {
+  max-height: 300px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: var(--radius);
+  margin: 8px 0;
+  border-left: 3px solid var(--primary);
+}
+
+.history-item span {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.history-item strong {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .detail-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails - Cahier de Performance</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>🎯 Cahier de Performance</h1>
+    <div class="navbar-right">
+      <span id="username"></span>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="detail-header">
+      <button onclick="goBack()" class="btn-back">← Retour</button>
+      <h1 id="domaineName"></h1>
+    </div>
+
+    <div class="detail-content">
+      <div class="detail-chart">
+        <h2>Progression</h2>
+        <canvas id="detailChart"></canvas>
+      </div>
+
+      <div class="detail-stats">
+        <h2>Statistiques</h2>
+        <div id="detailStats"></div>
+      </div>
+
+      <div class="detail-rituels">
+        <h2>Rituels de ce domaine</h2>
+        <div id="detailRituels"></div>
+      </div>
+
+      <div class="detail-history">
+        <h2>Historique</h2>
+        <div id="detailHistory"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>

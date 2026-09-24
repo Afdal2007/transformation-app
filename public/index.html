@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cahier de Performance</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>🎯 Cahier de Performance</h1>
+    <div class="navbar-right">
+      <span id="username"></span>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dashboard">
+      <div id="scores" class="scores"></div>
+      <canvas id="chart"></canvas>
+    </div>
+
+    <div class="history-section">
+      <h2>📈 Progression 30 jours</h2>
+      <canvas id="historyChart"></canvas>
+    </div>
+
+    <div class="form-section">
+      <h2>Ajouter une évaluation</h2>
+     <select id="domaine">
+  <option value="">-- Domaine --</option>
+  <option value="1">Corps Physique & Énergie</option>
+  <option value="2">Bonheur & Récréation</option>
+  <option value="3">Développement Personnel</option>
+  <option value="4">Relations Sociales</option>
+  <option value="5">Relation Conjugale</option>
+  <option value="6">Carrière & Profession</option>
+</select>
+      
+      <input type="range" id="score" min="1" max="5" value="3">
+      <span id="scoreVal">3</span>/5
+      
+      <button onclick="saveEval()">Enregistrer</button>
+    </div>
+
+   <div class="rituels-section">
+  <h2>Rituels d'aujourd'hui</h2>
+  
+  <div class="add-rituel">
+    <select id="rituelDomaine">
+  <option value="">-- Domaine --</option>
+  <option value="1">Corps Physique & Énergie</option>
+  <option value="2">Bonheur & Récréation</option>
+  <option value="3">Développement Personnel</option>
+  <option value="4">Relations Sociales</option>
+  <option value="5">Relation Conjugale</option>
+  <option value="6">Carrière & Profession</option>
+</select>
+    
+    <input type="text" id="rituelDesc" placeholder="Description du rituel">
+    
+    <select id="rituelMoment">
+      <option value="matin">🌅 Matin</option>
+      <option value="jour">☀️ Jour</option>
+      <option value="soir">🌙 Soir</option>
+    </select>
+    
+    <button onclick="addRituel()">+ Ajouter</button>
+  </div>
+  
+  <div id="rituels"></div>
+</div>
+
+<div class="stats-section">
+  <h2>📊 Statistiques</h2>
+  <div id="stats"></div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
